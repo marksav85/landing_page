@@ -1,3 +1,4 @@
+
 const card = document.querySelector('.your-active-class').innerHTML;
 const previousSection = document.querySelector('#section3');
 /*const allSections = document.getElementsByTagName('section');*/
@@ -13,8 +14,9 @@ previousSection.insertAdjacentHTML('afterend', '<section data-nav="Section 4" cl
 document.querySelector('.newSection').insertAdjacentHTML('afterbegin', card);
 }; */
 
-let sectionCount= 3
+let sectionCount = 3
 let runCount = 0
+
 function addSection() {
   while (runCount < sectionCount) {
     previousSection.insertAdjacentHTML('afterend', '<section data-nav="Section 4" class="newSection"></section>');
@@ -30,11 +32,9 @@ addSection();
   previousSection.insertAdjacentHTML('afterend', "<div data-nav="Section 4" class="your-active-class"></div>");
 }*/
 
-
-
-
-
-
+const list = document.querySelector('#navbar__list');
+const htmlTextToList = '<li>Skydiving is fun!</li>';
+list.insertAdjacentHTML('afterbegin', htmlTextToList);
 
 /**
  *
@@ -49,19 +49,19 @@ addSection();
  *
  * JS Standard: ESlint
  *
-*/
+ */
 
 /**
  * Define Global Variables
  *
-*/
+ */
 
 
 /**
  * End Global Variables
  * Start Helper Functions
  *
-*/
+ */
 
 
 
@@ -69,7 +69,7 @@ addSection();
  * End Helper Functions
  * Begin Main Functions
  *
-*/
+ */
 
 // build the nav
 
@@ -84,7 +84,7 @@ addSection();
  * End Main Functions
  * Begin Events
  *
-*/
+ */
 
 // Build menu
 
