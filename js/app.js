@@ -1,12 +1,36 @@
 const card = document.querySelector('.your-active-class').innerHTML;
 const previousSection = document.querySelector('#section3');
 /*const allSections = document.getElementsByTagName('section');*/
-const newSection = document.createElement('div');
-newSection.setAttribute('class', 'newContainer');
+/*const newSection = document.createElement('div');*/
+/*newSection.setAttribute('class', 'newContainer');*/
 /*newSection.insertAdjacentHTML('afterend', card);*/
 /*previousSection.insertAdjacentHTML('afterend', newSection);*/
 /*previousSection.insertAdjacentHTML('afterend', card);*/
-previousSection.appendChild(newSection);
+/*previousSection.appendChild(card);*/
+
+/*function addSection() {
+previousSection.insertAdjacentHTML('afterend', '<section data-nav="Section 4" class="newSection"></section>');
+document.querySelector('.newSection').insertAdjacentHTML('afterbegin', card);
+}; */
+
+let sectionCount= 3
+let runCount = 0
+function addSection() {
+  while (runCount < sectionCount) {
+    previousSection.insertAdjacentHTML('afterend', '<section data-nav="Section 4" class="newSection"></section>');
+    document.querySelector('.newSection').insertAdjacentHTML('afterbegin', card);
+    runCount += 1;
+  }
+}
+
+addSection();
+
+
+/*function addSection() {
+  previousSection.insertAdjacentHTML('afterend', "<div data-nav="Section 4" class="your-active-class"></div>");
+}*/
+
+
 
 
 
