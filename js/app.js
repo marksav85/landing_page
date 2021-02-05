@@ -33,8 +33,20 @@ addSection();
 }*/
 
 const list = document.querySelector('#navbar__list');
-const htmlTextToList = '<li>Skydiving is fun!</li>';
-list.insertAdjacentHTML('afterbegin', htmlTextToList);
+const listItem = '<li><h3>Section 1</h3></li>';
+
+let navCount = sectionCount + 3
+
+function addNavItem() {
+  runCount = 0
+  while (runCount < navCount) {
+    list.insertAdjacentHTML('afterbegin', listItem);
+    const listStyle = document.querySelector('li').setAttribute('style', 'color: blue');
+    runCount += 1;
+  }
+}
+
+addNavItem();
 
 /**
  *
