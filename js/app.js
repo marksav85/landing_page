@@ -48,6 +48,13 @@ function addNavItem() {
 
 addNavItem();
 
+const scrollToContent = document.querySelector('#section3')
+const clickToView = document.querySelector('li');
+clickToView.addEventListener('click', function () {
+  scrollToContent.scrollIntoView({behavior: "smooth"});
+});
+
+
 /**
  *
  * Manipulating the DOM exercise.
