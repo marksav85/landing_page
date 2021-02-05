@@ -33,7 +33,7 @@ addSection();
 }*/
 
 const list = document.querySelector('#navbar__list');
-const listItem = '<li><h3>Section 1</h3></li>';
+const listItem = '<li><h3><a href="#section3">Section 3</a></h3></li>';
 
 let navCount = sectionCount + 3
 
