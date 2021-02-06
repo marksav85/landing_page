@@ -54,6 +54,25 @@ clickToView.addEventListener('click', function () {
   scrollToContent.scrollIntoView({behavior: "smooth"});
 });
 
+// Get the section3 tag
+const findSection = document.querySelector('#section3');
+// Get it's position in the viewport
+let posSection = findSection.getBoundingClientRect();
+
+const isInViewport = function (findSection) {
+    let posSection = findSection.getBoundingClientRect();
+    return (
+      posSection.top >= 0 &&
+      posSection.left >= 0 &&
+      posSection.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+      posSection.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+    );
+};
+
+if (isInViewport(findSection)) {
+    console.log('success!')
+}
+
 
 /**
  *
