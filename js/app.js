@@ -55,7 +55,7 @@ clickToView.addEventListener('click', function () {
 });
 
 // Get the section3 tag
-const findSection = document.querySelector('#section3');
+let findSection = document.querySelector('#section3');
 // Get it's position in the viewport
 let posSection = findSection.getBoundingClientRect();
 
@@ -69,8 +69,10 @@ const isInViewport = function (findSection) {
     );
 };
 
+const notActive = document.querySelector('.your-active-class')
 if (isInViewport(findSection)) {
-    console.log('success!')
+  notActive.classList.remove('your-active-class')
+  findSection.classList.add('your-active-class');
 }
 
 
