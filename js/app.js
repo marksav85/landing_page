@@ -1,18 +1,17 @@
 
 const card = document.querySelector('.your-active-class').innerHTML;
 const previousSection = document.querySelector('#section3');
-/*const allSections = document.getElementsByTagName('section');*/
-/*const newSection = document.createElement('div');*/
-/*newSection.setAttribute('class', 'newContainer');*/
-/*newSection.insertAdjacentHTML('afterend', card);*/
-/*previousSection.insertAdjacentHTML('afterend', newSection);*/
-/*previousSection.insertAdjacentHTML('afterend', card);*/
-/*previousSection.appendChild(card);*/
-
-/*function addSection() {
-previousSection.insertAdjacentHTML('afterend', '<section data-nav="Section 4" class="newSection"></section>');
-document.querySelector('.newSection').insertAdjacentHTML('afterbegin', card);
-}; */
+let secIdName = 'section'
+let secClassName = 'Section '
+let secNum = 0
+let secNumStr = ""
+let sectionList = document.querySelectorAll('section');
+for (sec of sectionList) {
+    secNum +=1
+    secNumStr = secNum.toString();
+    /*sec.nextElementSibling.setAttribute('id', 'secIdName + secNumStr');*/
+    console.log(secNum, secNumStr, sec);
+  }
 
 let sectionCount = 3
 let runCount = 0
@@ -71,7 +70,7 @@ const isInViewport = function (findSection) {
 
 const notActive = document.querySelector('.your-active-class')
 if (isInViewport(findSection)) {
-  notActive.classList.remove('your-active-class')
+  notActive.classList.remove('your-active-class');
   findSection.classList.add('your-active-class');
 }
 
