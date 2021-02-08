@@ -10,17 +10,20 @@ let secNum = defaultSections
 let secNumStr = secNum.toString();
 let runCount = 0
 let previousSection = document.querySelector('#section' + secNumStr);
+let sectionHeadings = ""
+
 
 function addSection() {
   while (runCount < addedSections) {
     secNum += 1
     secNumStr = secNum.toString();
-    previousSection.insertAdjacentHTML('afterend', '<section id="newSection" data-nav="Section"></section>');
+    previousSection.insertAdjacentHTML('afterend', '<section id="newSection"></section>');
     document.querySelector('#newSection').insertAdjacentHTML('afterbegin', card);
     document.getElementById("newSection").setAttribute("id", "section" + secNumStr);
     previousSection = document.querySelector('#section' + secNumStr);
+    sectionHeadings = previousSection.getElementsByTagName('h2');
+    sectionHeadings.innerHTML('Section ' + secNumStr);
     runCount += 1;
-    console.log(secNumStr)
   }
 }
 
@@ -28,18 +31,12 @@ addSection()
 
 
 
-/*function addSection() {
-  previousSection.insertAdjacentHTML('afterend', "<div data-nav="Section 4" class="your-active-class"></div>");
-}*/
-
 const list = document.querySelector('#navbar__list');
 const listItem = '<li><h3><a href="#section3">Section 3</a></h3></li>';
 
-let navCount = sectionCount + 3
-
 function addNavItem() {
   runCount = 0
-  while (runCount < navCount) {
+  while (runCount < totalSections) {
     list.insertAdjacentHTML('afterbegin', listItem);
     const listStyle = document.querySelector('li').setAttribute('style', 'color: blue');
     runCount += 1;
