@@ -1,30 +1,31 @@
 
 const card = document.querySelector('.your-active-class').innerHTML;
-const previousSection = document.querySelector('#section3');
+
 let secIdName = 'section'
 let secClassName = 'Section '
-let secNum = 0
-let secNumStr = ""
-let sectionList = document.querySelectorAll('section');
-for (sec of sectionList) {
-    secNum +=1
-    secNumStr = secNum.toString();
-    /*sec.nextElementSibling.setAttribute('id', 'secIdName + secNumStr');*/
-    console.log(secNum, secNumStr, sec);
-  }
-
-let sectionCount = 3
+let defaultSections = 3
+let addedSections = 3
+let totalSections = defaultSections + addedSections
+let secNum = defaultSections
+let secNumStr = secNum.toString();
 let runCount = 0
+let previousSection = document.querySelector('#section' + secNumStr);
 
 function addSection() {
-  while (runCount < sectionCount) {
-    previousSection.insertAdjacentHTML('afterend', '<section data-nav="Section 4" class="newSection"></section>');
-    document.querySelector('.newSection').insertAdjacentHTML('afterbegin', card);
+  while (runCount < addedSections) {
+    secNum += 1
+    secNumStr = secNum.toString();
+    previousSection.insertAdjacentHTML('afterend', '<section id="newSection" data-nav="Section"></section>');
+    document.querySelector('#newSection').insertAdjacentHTML('afterbegin', card);
+    document.getElementById("newSection").setAttribute("id", "section" + secNumStr);
+    previousSection = document.querySelector('#section' + secNumStr);
     runCount += 1;
+    console.log(secNumStr)
   }
 }
 
-addSection();
+addSection()
+
 
 
 /*function addSection() {
