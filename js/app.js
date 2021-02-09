@@ -46,24 +46,30 @@ addNavItem();
 
 
 // Get the section3 tag
-let findSection = document.querySelectorAll('section');
+let sectionList = document.querySelectorAll('section');
 // Get it's position in the viewport
-for (sec of findSection) {
-  let isInViewport = function (sec) {
-      let posSection = sec.getBoundingClientRect();
-      return (
-        posSection.top >= 0 &&
-        posSection.left >= 0 &&
-        posSection.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-        posSection.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-      );
-  };
-  let notActive = document.querySelector('.your-active-class')
-  if (isInViewport(sec)) {
-    notActive.classList.remove('your-active-class');
-    sec.classList.add('your-active-class');
+function viewportCheck() {
+  for (listItem of sectionList) {
+    let isInViewport = function (listItem) {
+        let posSection = listItem.getBoundingClientRect();
+        return (
+          posSection.top >= 0 &&
+          posSection.left >= 0 &&
+          posSection.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+          posSection.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        );
+      };
+      let notActive = document.querySelector('.your-active-class')
+      if (isInViewport(listItem)) {
+        notActive.classList.remove('your-active-class');
+        listItem.classList.add('your-active-class');
+      }
+    }
   }
-}
+
+  viewportCheck();
+
+  let scrollCheck = window.addEventListener('scroll', viewportCheck);
 
 
 /*const isInViewport = function (findSection) {
