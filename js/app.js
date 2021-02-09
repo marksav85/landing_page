@@ -48,8 +48,25 @@ addNavItem();
 // Get the section3 tag
 let findSection = document.querySelectorAll('section');
 // Get it's position in the viewport
-let posSection = findSection.getBoundingClientRect();
-const isInViewport = function (findSection) {
+for (sec of findSection) {
+  let isInViewport = function (sec) {
+      let posSection = sec.getBoundingClientRect();
+      return (
+        posSection.top >= 0 &&
+        posSection.left >= 0 &&
+        posSection.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+        posSection.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+      );
+  };
+  let notActive = document.querySelector('.your-active-class')
+  if (isInViewport(sec)) {
+    notActive.classList.remove('your-active-class');
+    sec.classList.add('your-active-class');
+  }
+}
+
+
+/*const isInViewport = function (findSection) {
     let posSection = findSection.getBoundingClientRect();
     return (
       posSection.top >= 0 &&
@@ -63,8 +80,33 @@ const notActive = document.querySelector('.your-active-class')
 if (isInViewport(findSection)) {
   notActive.classList.remove('your-active-class');
   findSection.classList.add('your-active-class');
+}*/
+
+// this is the target which is observed
+/*var target = document.querySelector('#section3')
+
+// configure the intersection observer instance
+var intersectionObserverOptions = {
+  root: null,   // default is the viewport
+  threshold: .5 // percentage of the taregt visible area which will trigger "onIntersection"
 }
 
+var observer = new IntersectionObserver(onIntersection, intersectionObserverOptions)
+
+// called when target is fully visible
+function onIntersection(entries, opts){
+  entries.forEach(entry => {
+    var visible = entry.intersectionRatio >= opts.thresholds[0]
+
+    console.clear();
+    console.log(entry.intersectionRatio.toFixed(2), visible)
+
+    target.classList.toggle('visible', visible)
+  })
+}
+
+// provide the observer with a target
+observer.observe(target)/*/
 
 /**
  *
