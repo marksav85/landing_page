@@ -10,7 +10,6 @@ let loopCount = 0
 let newSection = document.querySelector('#section' + sectionNumStr);
 let sectionHeadings = document.getElementsByTagName("h2")[0];
 
-
 function addSection() {
   while (loopCount < addedSections) {
     sectionNum += 1
@@ -30,30 +29,26 @@ addSection()
 
 
 const list = document.querySelector('#navbar__list');
-const listItem = '<li><h3><a href="#section3">Section 3</a></h3></li>';
-
 function addNavItem() {
   loopCount = 0
+  let reverseCount = totalSections;
   while (loopCount < totalSections) {
+    let listItem = '<li><h3><a href="#section' + reverseCount.toString() + '">Section ' + reverseCount.toString() + '</a></h3></li>';
     list.insertAdjacentHTML('afterbegin', listItem);
     const listStyle = document.querySelector('li').setAttribute('style', 'color: blue');
     loopCount += 1;
+    reverseCount -= 1;
   }
 }
 
 addNavItem();
 
-const scrollToContent = document.querySelector('#section3')
-const clickToView = document.querySelector('li');
-clickToView.addEventListener('click', function () {
-  scrollToContent.scrollIntoView({behavior: "smooth"});
-});
+
 
 // Get the section3 tag
-let findSection = document.querySelector('#section3');
+let findSection = document.querySelectorAll('section');
 // Get it's position in the viewport
 let posSection = findSection.getBoundingClientRect();
-
 const isInViewport = function (findSection) {
     let posSection = findSection.getBoundingClientRect();
     return (
