@@ -28,12 +28,15 @@ addSection()
 
 
 
+
+
+
 const list = document.querySelector('#navbar__list');
 function addNavItem() {
   loopCount = 0
   let reverseCount = totalSections;
   while (loopCount < totalSections) {
-    let listItem = '<li><h3><a href="#section' + reverseCount.toString() + '">Section ' + reverseCount.toString() + '</a></h3></li>';
+    let listItem = '<li id=navi' + reverseCount.toString() + ' ><h3>Section ' + reverseCount.toString() + '</h3></li>';
     list.insertAdjacentHTML('afterbegin', listItem);
     const listStyle = document.querySelector('li').setAttribute('style', 'color: blue');
     loopCount += 1;
@@ -42,6 +45,16 @@ function addNavItem() {
 }
 
 addNavItem();
+
+function jumpTo() {
+   document.getElementById("navi6").addEventListener("click", function() {
+   document.getElementById('section6').scrollIntoView({
+    behavior: 'smooth'
+   });
+ });
+}
+
+jumpTo();
 
 
 
@@ -72,47 +85,6 @@ function viewportCheck() {
   let scrollCheck = window.addEventListener('scroll', viewportCheck);
 
 
-/*const isInViewport = function (findSection) {
-    let posSection = findSection.getBoundingClientRect();
-    return (
-      posSection.top >= 0 &&
-      posSection.left >= 0 &&
-      posSection.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-      posSection.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-    );
-};
-
-const notActive = document.querySelector('.your-active-class')
-if (isInViewport(findSection)) {
-  notActive.classList.remove('your-active-class');
-  findSection.classList.add('your-active-class');
-}*/
-
-// this is the target which is observed
-/*var target = document.querySelector('#section3')
-
-// configure the intersection observer instance
-var intersectionObserverOptions = {
-  root: null,   // default is the viewport
-  threshold: .5 // percentage of the taregt visible area which will trigger "onIntersection"
-}
-
-var observer = new IntersectionObserver(onIntersection, intersectionObserverOptions)
-
-// called when target is fully visible
-function onIntersection(entries, opts){
-  entries.forEach(entry => {
-    var visible = entry.intersectionRatio >= opts.thresholds[0]
-
-    console.clear();
-    console.log(entry.intersectionRatio.toFixed(2), visible)
-
-    target.classList.toggle('visible', visible)
-  })
-}
-
-// provide the observer with a target
-observer.observe(target)/*/
 
 /**
  *
