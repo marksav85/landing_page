@@ -27,36 +27,37 @@ function addSection() {
 addSection()
 
 
-
-
-
-
+let myArray = [];
 const list = document.querySelector('#navbar__list');
 function addNavItem() {
   loopCount = 0
   let reverseCount = totalSections;
   while (loopCount < totalSections) {
-    let listItem = '<li id=navi' + reverseCount.toString() + ' ><h3>Section ' + reverseCount.toString() + '</h3></li>';
+    let listItem = '<li id=' + reverseCount.toString() + ' ><h3>Section ' + reverseCount.toString() + '</h3></li>';
     list.insertAdjacentHTML('afterbegin', listItem);
     const listStyle = document.querySelector('li').setAttribute('style', 'color: blue');
     loopCount += 1;
     reverseCount -= 1;
+    myArray.push(loopCount);
   }
 }
 
 addNavItem();
 
 function jumpTo() {
-   document.getElementById("navi6").addEventListener("click", function() {
-   document.getElementById('section6').scrollIntoView({
-    behavior: 'smooth'
-   });
- });
+  let listItemArray = document.querySelectorAll('li');
+  let forEachCount = 0
+  listItemArray.forEach(move => move.addEventListener("click", function() {
+    forEachCount += 1;
+    document.getElementById('section' + forEachCount.toString()).scrollIntoView({
+      behavior: 'smooth'
+    });
+  }));
 }
 
 jumpTo();
 
-
+/*elementsArray.forEach(el => el.addEventListener('input', functionThatDoesStuff))*/
 
 // Get the section3 tag
 let sectionList = document.querySelectorAll('section');
