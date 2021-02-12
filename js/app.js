@@ -27,7 +27,7 @@ function addSection() {
 addSection()
 
 
-let myArray = [];
+let navAnchor = [];
 const list = document.querySelector('#navbar__list');
 function addNavItem() {
   loopCount = 0
@@ -38,7 +38,7 @@ function addNavItem() {
     const listStyle = document.querySelector('li').setAttribute('style', 'color: blue; padding-right: 10px');
     loopCount += 1;
     reverseCount -= 1;
-    myArray.push(loopCount);
+    navAnchor.push(loopCount);
   }
 }
 
@@ -84,6 +84,24 @@ function viewportCheck() {
 viewportCheck();
 
 let scrollCheck = window.addEventListener('scroll', viewportCheck);
+
+
+
+function addButton() {
+  let findPara = document.querySelectorAll('section');
+  findPara.forEach(btnPos => btnPos.insertAdjacentHTML('beforeend', '<div class="wrapper"><button class="button">Button</button></div>'));
+  document.querySelector('.wrapper').setAttribute('style', 'justify-content: center');
+}
+
+addButton();
+
+/*let wrpr = document.querySelector('.wrapper');
+let wrapperStyle = wrpr.setAttribute('style', '');
+let btn = document.querySelector('.button');
+let buttonStyle =  btn.setAttribute('style', 'position: absolute; top: 50%');*/
+
+
+
 
 
 
