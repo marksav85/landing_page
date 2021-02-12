@@ -33,9 +33,9 @@ function addNavItem() {
   loopCount = 0
   let reverseCount = totalSections;
   while (loopCount < totalSections) {
-    let listItem = '<li id=' + reverseCount.toString() + ' ><h3>Section ' + reverseCount.toString() + '</h3></li>';
+    let listItem = '<li id=' + reverseCount.toString() + ' ><h3>Section ' + reverseCount.toString() + ' ' + '</h3></li>';
     list.insertAdjacentHTML('afterbegin', listItem);
-    const listStyle = document.querySelector('li').setAttribute('style', 'color: blue');
+    const listStyle = document.querySelector('li').setAttribute('style', 'color: blue; padding-right: 10px');
     loopCount += 1;
     reverseCount -= 1;
     myArray.push(loopCount);
@@ -81,9 +81,9 @@ function viewportCheck() {
     }
   }
 
-  viewportCheck();
+viewportCheck();
 
-  let scrollCheck = window.addEventListener('scroll', viewportCheck);
+let scrollCheck = window.addEventListener('scroll', viewportCheck);
 
 
 
