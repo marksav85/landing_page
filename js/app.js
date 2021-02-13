@@ -73,7 +73,7 @@ placeButton();
 function styleButton() {
   const buttonList = document.querySelectorAll('button');
   for (buttons of buttonList) {
-    buttons.setAttribute('style', 'border-radius: 3em; background-color: #6D7780; color: #FFFFFF; border: none; outline: none');
+    buttons.setAttribute('style', 'border-radius: 3em; background-color: #4eb5f1; color: #FFFFFF; border: none; outline: none');
   }
 }
 styleButton();
