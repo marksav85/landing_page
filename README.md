@@ -5,15 +5,16 @@
 Landing Page
 
 ### Description
-This is a multi-section landing page, with a dynamically updating navigational
-menu based on the amount of content that is added to the page.
+This is a multi-section landing page, with a **dynamically updating navigational**
+**menu** based on the amount of content that is added to the page. Includes
+**scrolling effect** from and to the navigational menu and relevant section.
 
 ### Files used
-_index.html_, _styles.css_ and _app.js_ from Udacity Landing Page Project as
+*index.html*, *styles.css* from Udacity Landing Page Project as
 part of the Front End Nanodegree Program
 
 ### Language
-JavaScript
+JavaScript, HTML, CSS
 
 ## Credits
 Udacity
