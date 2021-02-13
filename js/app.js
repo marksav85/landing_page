@@ -1,14 +1,5 @@
 
-const contentCard = document.querySelector('.your-active-class').innerHTML;
 
-let defaultSections = 3
-let addedSections = 3
-let totalSections = defaultSections + addedSections
-let sectionNum = defaultSections
-let sectionNumStr = sectionNum.toString();
-let loopCount = 0
-let newSection = document.querySelector('#section' + sectionNumStr);
-let sectionHeadings = document.getElementsByTagName("h2")[0];
 
 function addSection() {
   while (loopCount < addedSections) {
@@ -45,7 +36,7 @@ function addNavItem() {
 addNavItem();
 
 function jumpTo() {
-  let listItemArray = document.querySelectorAll('li');
+  const listItemArray = document.querySelectorAll('li');
   let forEachCount = 0
   listItemArray.forEach(move => move.addEventListener("click", function() {
     forEachCount += 1;
@@ -60,49 +51,43 @@ jumpTo();
 /*elementsArray.forEach(el => el.addEventListener('input', functionThatDoesStuff))*/
 
 // Get the section3 tag
-let sectionList = document.querySelectorAll('section');
+
 // Get it's position in the viewport
-function viewportCheck() {
-  for (listItem of sectionList) {
-    let isInViewport = function (listItem) {
-        let posSection = listItem.getBoundingClientRect();
-        return (
-          posSection.top >= 0 &&
-          posSection.left >= 0 &&
-          posSection.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-          posSection.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-        );
-      };
-      let notActive = document.querySelector('.your-active-class')
-      if (isInViewport(listItem)) {
-        notActive.classList.remove('your-active-class');
-        listItem.classList.add('your-active-class');
-      }
-    }
-  }
 
-viewportCheck();
-
-let scrollCheck = window.addEventListener('scroll', viewportCheck);
 
 
 
 function addButton() {
-  let findPara = document.querySelectorAll('section');
-  findPara.forEach(btnPos => btnPos.insertAdjacentHTML('beforeend', '<div class="wrapper"><button class="button">Button</button></div>'));
-  document.querySelector('.wrapper').setAttribute('style', 'justify-content: center');
+  /*sectionEnd = document.querySelectorAll('section');*/
+  sectionList.forEach(newButton => newButton.insertAdjacentHTML('beforeend', '<div class="wrapper"><button class="button">Return to Top</button>'));
 }
 
 addButton();
 
-/*let wrpr = document.querySelector('.wrapper');
-let wrapperStyle = wrpr.setAttribute('style', '');
-let btn = document.querySelector('.button');
-let buttonStyle =  btn.setAttribute('style', 'position: absolute; top: 50%');*/
+function placeButton() {
+  const findButton = document.querySelectorAll('.wrapper');
+  findButton.forEach(buttonPlacement => buttonPlacement.setAttribute('style', 'text-align: center;'));
+}
 
+placeButton();
 
+function styleButton() {
+  const buttonList = document.querySelectorAll('button');
+  for (buttons of buttonList) {
+    buttons.setAttribute('style', 'border-radius: 3em; background-color: #6D7780; color: #FFFFFF; border: none; outline: none');
+  }
+}
 
+styleButton();
 
+function scrollToTop() {
+  const returnToTop = document.querySelectorAll('button');
+  returnToTop.forEach(scrollUp => scrollUp.addEventListener('click', function() {
+  window.scrollTo({top: 0, behavior: 'smooth'});
+}));
+}
+
+scrollToTop();
 
 
 /**
@@ -125,6 +110,19 @@ let buttonStyle =  btn.setAttribute('style', 'position: absolute; top: 50%');*/
  *
  */
 
+ // addSection Variables
+ const contentCard = document.querySelector('.your-active-class').innerHTML;
+ const defaultSections = 3
+ let addedSections = 3
+ let totalSections = defaultSections + addedSections
+ let sectionNum = defaultSections
+ let sectionNumStr = sectionNum.toString();
+ let loopCount = 0
+ let newSection = document.querySelector('#section' + sectionNumStr);
+ let sectionHeadings = document.getElementsByTagName("h2")[0];
+
+// viewportCheck and addButton Variable
+ const sectionList = document.querySelectorAll('section');
 
 /**
  * End Global Variables
@@ -144,6 +142,28 @@ let buttonStyle =  btn.setAttribute('style', 'position: absolute; top: 50%');*/
 
 
 // Add class 'active' to section when near top of viewport
+function viewportCheck() {
+  for (listItem of sectionList) {
+    let isInViewport = function (listItem) {
+        let posSection = listItem.getBoundingClientRect();
+        return (
+          posSection.top >= 0 &&
+          posSection.left >= 0 &&
+          posSection.right <= (window.innerWidth || document.documentElement.clientWidth) &&
+          posSection.bottom <= (window.innerHeight || document.documentElement.clientHeight)
+        );
+      };
+      const notActive = document.querySelector('.your-active-class')
+      if (isInViewport(listItem)) {
+        notActive.classList.remove('your-active-class');
+        listItem.classList.add('your-active-class');
+      }
+    }
+  }
+
+viewportCheck();
+
+
 
 
 // Scroll to anchor ID using scrollTO event
@@ -160,3 +180,4 @@ let buttonStyle =  btn.setAttribute('style', 'position: absolute; top: 50%');*/
 // Scroll to section on link click
 
 // Set sections as active
+const scrollCheck = window.addEventListener('scroll', viewportCheck);
