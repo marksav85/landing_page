@@ -133,6 +133,7 @@ function sectionScroll() {
   const listItemArray = document.querySelectorAll('li');
   let forEachCount = 0
   listItemArray.forEach(move => move.addEventListener("click", function() {
+    event.preventDefault();
     forEachCount += 1;
     document.getElementById('section' + forEachCount.toString()).scrollIntoView({
       behavior: 'smooth'
