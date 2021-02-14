@@ -128,25 +128,25 @@ const scrollCheck = window.addEventListener('scroll', viewportCheck);
 
 
 // Scroll to anchor ID using scrollTo event
-const listItemArray = document.querySelectorAll('li');
 function sectionScroll() {
-  let forEachCount = 0
-  listItemArray.forEach(move => move.addEventListener("click", function() {
+  document.addEventListener("click", function(event) {
+    let targetElement = event.target;
+    let idNumber = targetElement.id;
     event.preventDefault();
-    forEachCount += 1;
-    document.getElementById('section' + forEachCount.toString()).scrollIntoView({
+    document.getElementById('section' + idNumber.toString()).scrollIntoView({
       behavior: 'smooth'
     });
-  }));
+  });
 }
 sectionScroll();
+
 
 // Changes Navbar menu font size based on screen size
 function navSize(screenSize) {
   if (screenSize.matches) {
-    listItemArray.forEach(small => small.setAttribute('style', 'color: blue; padding-right: 10px; font-size: 0.5em'));
+    document.querySelectorAll('li').forEach(small => small.setAttribute('style', 'color: blue; padding-right: 10px; font-size: 0.5em'));
   } else {
-    listItemArray.forEach(big => big.setAttribute('style', 'color: blue; padding-right: 10px; font-size: 1.5em'));
+    document.querySelectorAll('li').forEach(big => big.setAttribute('style', 'color: blue; padding-right: 10px; font-size: 1.5em'));
   }
 }
 const screenSize = window.matchMedia('(max-width: 700px)')
