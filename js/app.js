@@ -114,12 +114,7 @@ function viewportCheck() {
   for (listItem of sectionList) {
     let isInViewport = function (listItem) {
         let posSection = listItem.getBoundingClientRect();
-        return (
-          posSection.top >= 0 &&
-          posSection.left >= 0 &&
-          posSection.right <= (window.innerWidth || document.documentElement.clientWidth) &&
-          posSection.bottom <= (window.innerHeight || document.documentElement.clientHeight)
-        );
+        return (posSection.top > -300 && 300 > posSection.top);
       };
       const notActive = document.querySelector('.your-active-class')
       if (isInViewport(listItem)) {
