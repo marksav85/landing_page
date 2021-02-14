@@ -98,9 +98,8 @@ function addNavItem() {
   loopCount = 0
   let reverseCount = totalSections;
   while (loopCount < totalSections) {
-    let listItem = '<li id=' + reverseCount.toString() + ' ><h3>Section ' + reverseCount.toString() + ' ' + '</h3></li>';
+    let listItem = '<li id=' + reverseCount.toString() + ' >Section ' + reverseCount.toString() + ' ' + '</li>';
     list.insertAdjacentHTML('afterbegin', listItem);
-    const listStyle = document.querySelector('li').setAttribute('style', 'color: blue; padding-right: 10px');
     loopCount += 1;
     reverseCount -= 1;
     navAnchor.push(loopCount);
@@ -129,8 +128,8 @@ const scrollCheck = window.addEventListener('scroll', viewportCheck);
 
 
 // Scroll to anchor ID using scrollTo event
+const listItemArray = document.querySelectorAll('li');
 function sectionScroll() {
-  const listItemArray = document.querySelectorAll('li');
   let forEachCount = 0
   listItemArray.forEach(move => move.addEventListener("click", function() {
     event.preventDefault();
@@ -141,6 +140,18 @@ function sectionScroll() {
   }));
 }
 sectionScroll();
+
+// Changes Navbar menu font size based on screen size
+function navSize(screenSize) {
+  if (screenSize.matches) {
+    listItemArray.forEach(small => small.setAttribute('style', 'color: blue; padding-right: 10px; font-size: 0.5em'));
+  } else {
+    listItemArray.forEach(big => big.setAttribute('style', 'color: blue; padding-right: 10px; font-size: 1.5em'));
+  }
+}
+const screenSize = window.matchMedia('(max-width: 700px)')
+navSize(screenSize)
+screenSize.addListener(navSize)
 
 /**
  * End Main Functions
