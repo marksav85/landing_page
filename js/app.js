@@ -107,6 +107,8 @@ function addNavItem() {
 }
 addNavItem();
 
+let defaultHighlight = document.querySelector('li').classList.add('active');
+
 // Add class 'active' to section when near top of viewport
 function viewportCheck() {
   let sectionList = document.querySelectorAll('section');
@@ -125,6 +127,26 @@ function viewportCheck() {
 viewportCheck();
 
 const scrollCheck = window.addEventListener('scroll', viewportCheck);
+
+
+function highlightNav() {
+  let currentActive = document.querySelector('.your-active-class');
+  let activeId = currentActive.getAttribute('id')
+  let idNumber = activeId.slice(-1);
+  let navItemList = document.querySelectorAll('li');
+  for (navItem of navItemList) {
+    const notActiveNav = document.querySelector('.active')
+    if (idNumber === navItem.getAttribute('id')) {
+      notActiveNav.classList.remove('active');
+      navItem.classList.add('active');
+    }
+  }
+}
+highlightNav();
+
+const highlightCheck = window.addEventListener('scroll', highlightNav);
+
+
 
 
 // Scroll to anchor ID using scrollTo event
