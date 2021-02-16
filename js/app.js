@@ -155,9 +155,13 @@ function sectionScroll() {
     let targetElement = event.target;
     let idNumber = targetElement.id;
     event.preventDefault();
-    document.getElementById('section' + idNumber.toString()).scrollIntoView({
+    if(idNumber == false) {
+    }
+    else {
+      document.getElementById('section' + idNumber.toString()).scrollIntoView({
       behavior: 'smooth'
     });
+    }
   });
 }
 sectionScroll();
